@@ -27,4 +27,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::prefix('admin')->name("admin.")->group(function () {
     Route::resource('zones', 'ZoneController');
+    Route::resource('items', 'ItemController');
 });

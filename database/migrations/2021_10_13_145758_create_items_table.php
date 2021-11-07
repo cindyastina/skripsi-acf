@@ -18,6 +18,7 @@ class CreateItemsTable extends Migration
             $table->string('name');
             $table->string('code');
             $table->bigInteger('price');
+            $table->boolean('is_active');
             $table->timestamps();
         });
     }

@@ -7,7 +7,7 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="{{URL::asset('css/app.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}" />
     <title>Document</title>
 </head>
 <body>
@@ -50,12 +50,12 @@
                     >
                         <li><a class="dropdown-item" href="#">Role Admin</a></li>
                         <li><a class="dropdown-item" href="#">Karyawan</a></li>
-                        <li><a class="dropdown-item" href="#">Daerah</a></li>
+                        <li><a class="dropdown-item" href="{{route("admin.zones.index")}}">Daerah</a></li>
                         <li><a class="dropdown-item" href="#">Customer</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Barang</a>
+                    <a class="nav-link" href="{{route("admin.items.index")}}">Barang</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Penjualan</a>
@@ -70,6 +70,6 @@
 <div class="container mt-5">
     @yield('content')
 </div>
-<script src="{{URL::asset('js/app.js')}}"></script>
+<script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
 </body>
 </html>
