@@ -16,9 +16,9 @@ class ZoneController extends Controller
     {
         //
         $pageName = "Daerah";
-        $zone = Zone::all();
+        $zones = Zone::all();
 
-        return view('admin.zones.index', compact(['zone', 'pageName']));
+        return view('admin.zones.index', compact(['zones', 'pageName']));
     }
 
     /**
@@ -28,24 +28,35 @@ class ZoneController extends Controller
      */
     public function create()
     {
-        //
+        $pageName = "Daerah";
+
+        return view('admin.zones.create', compact(['pageName']));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         //
+        $data = $request->all();
+        $fillable = [
+            'name' => strtoupper($data['name'])
+        ];
+
+        $zone = new Zone($fillable);
+        $zone->save();
+
+        return redirect()->route('admin.zones.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Zone  $zone
+     * @param \App\Models\Zone $zone
      * @return \Illuminate\Http\Response
      */
     public function show(Zone $zone)
@@ -56,34 +67,44 @@ class ZoneController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Zone  $zone
+     * @param \App\Models\Zone $zone
      * @return \Illuminate\Http\Response
      */
     public function edit(Zone $zone)
     {
         //
+        $pageName = "Daerah";
+        return view('admin.zones.edit', compact(['zone', 'pageName']));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Zone  $zone
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Zone $zone
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Zone $zone)
     {
         //
+        $data = $request->all();
+        $zone->name = strtoupper($data['name']) ?? $zone->name;
+
+        $zone->save();
+        return redirect()->route("admin.zones.index");
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Zone  $zone
+     * @param \App\Models\Zone $zone
      * @return \Illuminate\Http\Response
      */
     public function destroy(Zone $zone)
     {
         //
+        $zone->delete();
+
+        return redirect()->route('admin.zones.index');
     }
 }

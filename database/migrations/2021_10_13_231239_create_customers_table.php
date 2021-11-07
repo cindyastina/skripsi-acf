@@ -22,11 +22,11 @@ class CreateCustomersTable extends Migration
             $table->string('personal_in_charge');
             $table->string('telephone_number');
 
-            $table->unsignedBigInteger('zones_id');
-            $table->foreign('zones_id')
-                ->references('id')
-                ->on("zones")
-                ->onDelete('cascade');
+//            $table->unsignedBigInteger('zones_id');
+//            $table->foreign('zones_id')
+//                ->references('id')
+//                ->on("zones")
+//                ->onDelete('cascade');
 
             $table->string('password');
 

@@ -21,10 +21,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/admin/zone', 'ZoneController@index');
-Route::get('/admin/zone/add', 'ZoneController@create');
-Route::post('/admin/zone', 'ZoneController@store');
+//Route::get('/admin/zone', 'ZoneController@index');
+//Route::get('/admin/zone/add', 'ZoneController@create');
+//Route::post('/admin/zone', 'ZoneController@store');
 
-Route::prefix('admin')->name("admin")->group(function () {
+Route::prefix('admin')->name("admin.")->group(function () {
     Route::resource('zones', 'ZoneController');
 });
